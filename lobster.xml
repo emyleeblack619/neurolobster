@@ -1,0 +1,144 @@
+<mujoco model="neurolobster">
+
+  <compiler angle="radian" meshdir="." texturedir="."/>
+  <option timestep="0.002" gravity="0 0 -9.81" viscosity="0.01"/>
+
+  <default>
+    <joint damping="0.1" armature="0.01"/>
+    <geom friction="1.0 0.005 0.0001" condim="3"/>
+  </default>
+
+  <asset>
+    <mesh name="lobster_body" file="lobster.obj" scale="0.003 0.003 0.003"/>
+    <texture name="tex_lobster" type="2d" file="lambert1_albedo.png"/>
+    <material name="mat_lobster" texture="tex_lobster" specular="0.5" shininess="0.3"/>
+    <material name="mat_ground" rgba="0.3 0.25 0.15 1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 3" dir="0 0 -1" diffuse="1 1 1" specular="0.3 0.3 0.3"/>
+    <light pos="1 1 2" dir="-1 -1 -1" diffuse="0.5 0.5 0.5"/>
+    <geom name="floor" type="plane" size="5 5 0.1" material="mat_ground"/>
+
+    <!-- Тело лобстера — только красивый mesh, физика через капсулу внутри -->
+    <body name="torso" pos="0 0 0.02" >
+      <freejoint name="root"/>
+
+      <!-- Визуальный mesh лобстера -->
+      <geom name="body_visual" type="mesh" mesh="lobster_body"
+            material="mat_lobster" mass="0.8" contype="0" conaffinity="0"/>
+
+      <!-- Невидимая физическая капсула тела для коллизий -->
+      <geom name="body_col" type="capsule" size="0.03 0.06"
+            pos="0 0 0" euler="0 1.5708 0"
+            rgba="1 0 0 0" mass="0.2"/>
+
+      <!-- Невидимые суставы ног — управляются CPG -->
+      <!-- ЛЕВЫЕ НОГИ -->
+      <body name="leg_L1" pos="-0.06 0.03 -0.01">
+        <joint name="j_L1_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_L1_low" pos="0.03 0.02 -0.02">
+          <joint name="j_L1_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_L2" pos="-0.02 0.035 -0.01">
+        <joint name="j_L2_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_L2_low" pos="0.03 0.02 -0.02">
+          <joint name="j_L2_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_L3" pos="0.02 0.035 -0.01">
+        <joint name="j_L3_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_L3_low" pos="0.03 0.02 -0.02">
+          <joint name="j_L3_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_L4" pos="0.06 0.03 -0.01">
+        <joint name="j_L4_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_L4_low" pos="0.03 0.02 -0.02">
+          <joint name="j_L4_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <!-- ПРАВЫЕ НОГИ -->
+      <body name="leg_R1" pos="-0.06 -0.03 -0.01">
+        <joint name="j_R1_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_R1_low" pos="0.03 -0.02 -0.02">
+          <joint name="j_R1_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_R2" pos="-0.02 -0.035 -0.01">
+        <joint name="j_R2_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_R2_low" pos="0.03 -0.02 -0.02">
+          <joint name="j_R2_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_R3" pos="0.02 -0.035 -0.01">
+        <joint name="j_R3_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_R3_low" pos="0.03 -0.02 -0.02">
+          <joint name="j_R3_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+      <body name="leg_R4" pos="0.06 -0.03 -0.01">
+        <joint name="j_R4_hip" type="hinge" axis="0 0 1" range="-0.5 0.5"/>
+        <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.005"/>
+        <body name="leg_R4_low" pos="0.03 -0.02 -0.02">
+          <joint name="j_R4_knee" type="hinge" axis="0 1 0" range="-0.6 0.1"/>
+          <geom type="sphere" size="0.002" rgba="0 0 0 0" mass="0.003"/>
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="a_L1_hip" joint="j_L1_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L2_hip" joint="j_L2_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L3_hip" joint="j_L3_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L4_hip" joint="j_L4_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R1_hip" joint="j_R1_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R2_hip" joint="j_R2_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R3_hip" joint="j_R3_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R4_hip" joint="j_R4_hip" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L1_knee" joint="j_L1_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L2_knee" joint="j_L2_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L3_knee" joint="j_L3_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_L4_knee" joint="j_L4_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R1_knee" joint="j_R1_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R2_knee" joint="j_R2_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R3_knee" joint="j_R3_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R4_knee" joint="j_R4_knee" gear="0.5" ctrllimited="true" ctrlrange="-1 1"/>
+  </actuator>
+
+  <sensor>
+    <jointpos name="s_L1_hip" joint="j_L1_hip"/>
+    <jointpos name="s_L2_hip" joint="j_L2_hip"/>
+    <jointpos name="s_L3_hip" joint="j_L3_hip"/>
+    <jointpos name="s_L4_hip" joint="j_L4_hip"/>
+    <jointpos name="s_R1_hip" joint="j_R1_hip"/>
+    <jointpos name="s_R2_hip" joint="j_R2_hip"/>
+    <jointpos name="s_R3_hip" joint="j_R3_hip"/>
+    <jointpos name="s_R4_hip" joint="j_R4_hip"/>
+  </sensor>
+
+</mujoco>

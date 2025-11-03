@@ -1,0 +1,7 @@
+brian2==2.5.4
+numpy<2.0
+mujoco>=3.6.0
+matplotlib>=3.7.0
+scipy>=1.10.0
+trimesh>=3.20.0
+pycollada>=0.9.0

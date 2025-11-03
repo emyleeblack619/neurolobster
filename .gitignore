@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.egg-info/
+dist/
+build/
+.env
+*.log
+/tmp/
+brian_debug_*.log
+brian_script_*.py
