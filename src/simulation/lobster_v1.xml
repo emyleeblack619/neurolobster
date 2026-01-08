@@ -1,0 +1,27 @@
+<mujoco model="neurolobster_v1">
+  <compiler angle="radian" meshdir="." texturedir="."/>
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1"/>
+    <geom name="floor" type="plane" size="5 5 0.1" rgba="0.3 0.25 0.15 1"/>
+    <!-- Simple box body — mesh will be added later -->
+    <body name="torso" pos="0 0 0.15">
+      <freejoint name="root"/>
+      <geom name="body" type="capsule" size="0.04 0.08"
+            euler="0 1.5708 0" rgba="0.8 0.3 0.1 1" mass="1.0"/>
+      <!-- 4 legs placeholder -->
+      <body name="leg_L1" pos="-0.06 0.04 -0.02">
+        <joint name="j_L1" type="hinge" axis="0 1 0" range="-0.8 0.8"/>
+        <geom type="capsule" size="0.01 0.04" pos="0 0 -0.04" rgba="0.7 0.25 0.08 1" mass="0.02"/>
+      </body>
+      <body name="leg_R1" pos="-0.06 -0.04 -0.02">
+        <joint name="j_R1" type="hinge" axis="0 1 0" range="-0.8 0.8"/>
+        <geom type="capsule" size="0.01 0.04" pos="0 0 -0.04" rgba="0.7 0.25 0.08 1" mass="0.02"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="a_L1" joint="j_L1" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+    <motor name="a_R1" joint="j_R1" gear="1" ctrllimited="true" ctrlrange="-1 1"/>
+  </actuator>
+</mujoco>
