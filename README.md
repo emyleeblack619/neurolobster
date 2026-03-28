@@ -57,7 +57,7 @@ STG Neurons (Brian2) → CPG Oscillator → Motor Commands → MuJoCo Body → P
 | Lobster walking, turning, reversing | AB/PD · LP · PY live traces | STG · CoG · VNC · Brain |
 | 8 legs · metachronal wave | Pyloric rhythm ~1Hz | 317 neurons · rotating |
 
-> 📹 *Demo video coming soon — [watch on Twitter](https://twitter.com)*
+> 📹 *Demo video coming soon — [watch on Twitter](https://x.com/0xsarano)*
 
 </div>
 
